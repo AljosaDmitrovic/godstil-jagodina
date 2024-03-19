@@ -1227,6 +1227,26 @@
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="lib/isotope/isotope.pkgd.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script>
+        window.onload = function () {
+            // Check if the page has been refreshed before
+            if (!sessionStorage.getItem("refreshed")) {
+                // Set session storage to indicate that the page has been refreshed
+                sessionStorage.setItem("refreshed", "true");
+                // Add the meta tag for refresh
+                var metaTag = document.createElement('meta');
+                metaTag.setAttribute('http-equiv', 'refresh');
+                metaTag.setAttribute('content', '0.1');
+                document.head.appendChild(metaTag);
+            } else {
+                // Remove the meta tag if the page has been refreshed before
+                var metaTag = document.querySelector('meta[http-equiv="refresh"]');
+                if (metaTag) {
+                    metaTag.parentNode.removeChild(metaTag);
+                }
+            }
+        };
+    </script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
